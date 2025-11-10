@@ -4,8 +4,7 @@ Code to take pngs and make the backgrounds transparent
 
 ## Demo
 
-<img src="https://github.com/cgrundman/transparent-png-maker/blob/main/sample_input.png" width="200" />
-<img src="https://github.com/cgrundman/transparent-png-maker/blob/main/sample_output.png" width="200" >
+<img src="https://github.com/cgrundman/transparent-png-maker/blob/main/sample_input.png" width="200" /> <img src="https://github.com/cgrundman/transparent-png-maker/blob/main/sample_output.png" width="200" >
 
 ## Run Locally
 
