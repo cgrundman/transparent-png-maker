@@ -11,13 +11,13 @@ Code to take pngs and make the backgrounds transparent
 Clone the project:
 
 ```bash
-git clone https://github.com/cgrundman/rf-ablation-monitor
+git clone https://github.com/cgrundman/transparent-png-maker.git
 ```
 
 Go to the project directory:
 
 ```bash
-cd local/path/rf-ablation-monitor
+cd local/path/transparent-png-maker
 ```
 
 In the terminal:
