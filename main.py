@@ -1,3 +1,4 @@
+import os
 from PIL import Image
 import numpy as np
 
@@ -39,9 +40,16 @@ def make_color_transparent(input_path, output_path, target_color, tolerance_perc
     new_img.save(output_path)
     print(f"Saved to {output_path}")
 
-make_color_transparent(
-    input_path="./inputs/input.png",
-    output_path="./outputs/output.png",
-    target_color=(199, 211, 229),
-    tolerance_percent=9
-)
+
+INPUTS = './inputs'
+OUTPUTS = './outputs'
+
+png_files = [f for f in os.listdir(f"{INPUTS}")]
+
+for file in png_files:
+    make_color_transparent(
+        input_path=f"{INPUTS}/{file}",
+        output_path=f"{OUTPUTS}/{file}",
+        target_color=(199, 211, 215),
+        tolerance_percent=10
+    )
