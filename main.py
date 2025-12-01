@@ -64,7 +64,7 @@ OUTPUTS = './outputs'
 
 # Create Color Gradient
 high_color = (218, 230, 248)
-low_color = (166, 180, 200)
+low_color = (163, 177, 197)
 color_gradient = linear_color_gradient(
     low_color=low_color, 
     high_color=high_color, 
