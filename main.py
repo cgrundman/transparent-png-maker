@@ -33,8 +33,45 @@ def make_color_transparent(img, target_color, tolerance_percent=10):
     return Image.fromarray(new_data.astype(np.uint8), "RGBA")
 
 
+def linear_color_gradient(low_color, high_color, steps=10):
+    """
+    Generate a linear list of RGB colors from low_color to high_color.
+
+    Args:
+        low_color (tuple): (R, G, B) starting color (dark).
+        high_color (tuple): (R, G, B) ending color (light).
+        steps (int): Number of colors in the output list.
+
+    Returns:
+        list[tuple]: List of (R, G, B) colors from dark → light.
+    """
+    gradient = []
+
+    for i in range(steps):
+        t = i / (steps - 1)  # normalized [0, 1]
+
+        r = int(low_color[0] + t * (high_color[0] - low_color[0]))
+        g = int(low_color[1] + t * (high_color[1] - low_color[1]))
+        b = int(low_color[2] + t * (high_color[2] - low_color[2]))
+
+        gradient.append((r, g, b))
+
+    return gradient
+
+
 INPUTS = './inputs'
 OUTPUTS = './outputs'
+
+# Create Color Gradient
+high_color = (218, 230, 248)
+low_color = (166, 180, 200)
+color_gradient = linear_color_gradient(
+    low_color=low_color, 
+    high_color=high_color, 
+    steps=75
+)
+
+tolerance = 0.65
 
 png_files = [f for f in os.listdir(f"{INPUTS}")]
 
@@ -43,12 +80,14 @@ for file in png_files:
         input_path = os.path.join(INPUTS, file)
         output_path = os.path.join(OUTPUTS, file)
 
-        #target_color = (218, 230, 248)
-        target_color = (180, 194, 213)
-        tolerance = 1
 
         img = Image.open(input_path)
-        result = make_color_transparent(img, target_color, tolerance)
+
+        for i, target_color in enumerate(color_gradient):
+        
+            result = make_color_transparent(img, target_color, tolerance)
+            img = result
 
         result.save(output_path)
+
         print(f"Saved to {output_path}")
